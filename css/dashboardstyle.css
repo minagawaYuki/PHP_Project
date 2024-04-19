@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.navbar {
+    background-color: rgb(105, 105, 217);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navbar h1 {
+    margin-left: 15px;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.navbar .user-profile {
+    font-size: 25px;
+}
+
+.content {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    width: 755px;
+}
+
+.content h1 {
+    text-align: center;
+}
+
+.content p {
+    text-align: center;
+}
+
+.registered-users-table {
+    margin-top: 105px;
+}
+
+.registered-users h1 {
+    text-align: center;
+}
+
+.registered-users-table table {
+    text-align: center;
+}
+
+.user-playlist .create-playlist {
+    font-size: 105px;
+}
