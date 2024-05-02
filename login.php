@@ -2,6 +2,10 @@
     include 'connect.php';
     //require_once 'includes/header.php';
 ?>
+<?php
+// Start the session
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +46,8 @@
                     }else if($row[3] != $pwd) {
                               echo "<p style='color:red;'>Password is incorrect.</p> <br>";
                     }else{
-                        $_SESSION['username']=$row[0];
+                        $_SESSION['accountid']=$row[0];
+                        $_SESSION['username']=$row[2];
                         header("location: dashboard.php");
                     }
                         

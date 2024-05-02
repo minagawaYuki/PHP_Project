@@ -26,7 +26,7 @@
                     
                     
                     //save data to tbluserprofile			
-                    $sql1 ="UPDATE tbluserplaylist
+                    $sql1 ="UPDATE tblplaylist
                             SET playlistname = '$playlistname'
                             WHERE playlistid = '$id'";
                     if (mysqli_query($connection, $sql1)) {

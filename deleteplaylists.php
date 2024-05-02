@@ -4,7 +4,7 @@
    
     
     // sql to delete a record
-    $sql = "DELETE FROM tbluserplaylist WHERE playlistid = $id";
+    $sql = "DELETE FROM tblplaylist WHERE playlistid = $id";
     
     if (mysqli_query($connection, $sql)) {
         mysqli_close($connection);

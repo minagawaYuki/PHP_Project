@@ -56,47 +56,21 @@ session_start();
     <div class="main-section">
         <div class="top-nav">
             <div class="username">
-            <?php
-                        echo "<span>".$_SESSION['username']."<span>";
-                    ?>
+                <span>Username</span>
             </div>
         </div>
-        <div class="song-section">
-            <h1>Songs<h1>
+        <div class="song-list">
             <?php
             $mysqli = new mysqli('localhost', 'root', '', 'dbbaringf2') or die (mysqli_error($mysqli));
             $resultset = $mysqli->query("SELECT songname from tblsongs") or die ($mysqli->error);
-            ?>
-            <div class="song-list">
-                <ol>
-                    <?php
-                        while($row = $resultset->fetch_assoc()):
-                    ?>
-                    <li>
-                        <?php echo $row['songname'] ?>
-                    </li>
-                    <?php endwhile;?>
-                </ol>
-            </div>
-        </div>
-        
-        <div class="playlist-section">
-            <h1>Your Playlists<h1>
+        ?>
+        <ul>
             <?php
-            $mysqli = new mysqli('localhost', 'root', '', 'dbbaringf2') or die (mysqli_error($mysqli));
-            $resultset = $mysqli->query("SELECT * from tblplaylist WHERE userid = ".$_SESSION['accountid']."") or die ($mysqli->error);
-            ?>
-            <div class="playlist-list">
-                <ol>
-                    <?php
                         while($row = $resultset->fetch_assoc()):
                     ?>
-                    <li>
-                        <?php echo "<a href='playlistsongs.php?id=".$row['playlistid']."' style='padding-right: 5px;'>".$row['playlistname']."</a>" ?>
-                    </li>
+                    <li><?php echo $row['songname'] ?></li>
                     <?php endwhile;?>
-                </ol>
-            </div>
+        </ul>
         </div>
     </div>
     
