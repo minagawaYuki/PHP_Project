@@ -201,4 +201,58 @@ body {
     text-decoration: none;
 }
 
+.playlist-form {
+    border: 1px solid pink;
+    color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.playlist-form .edit-playlist {
+    background-color: #000;
+    border: 1px solid pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 175px;
+    width: 335px;
+}
+
+.playlist-form .edit-playlist .playlist-name {
+    width: 80%;
+}
+
+.playlist-form .edit-playlist .playlist-name input {
+    height: 35px;
+    margin-top: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+.playlist-form .edit-playlist .btnSubmit button {
+    height: 25px;
+    width: 19px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.playlist-form .close-form {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.playlist-title h1 { 
+    color: white;
+}
+
+
 

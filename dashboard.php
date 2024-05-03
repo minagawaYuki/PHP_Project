@@ -13,6 +13,11 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="js/dashboard.js"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
@@ -46,7 +51,7 @@ session_start();
                     <div class="create-playlist">
                         <h4>Create your first playlist</h4>
                         <p>It's easy, we'll help you</p>
-                        <button>Create Playlist</button>    
+                        <button id="btnCreatePlaylist">Create Playlist</button>    
                     </div>
                 </div>
             </li>
@@ -99,6 +104,50 @@ session_start();
             </div>
         </div>
     </div>
+    <div class="playlist-form">
+        <div class="edit-playlist">
+            <span>Create Playlist</span>
+            <div class="playlist-name">
+                <form method="post">
+                    <input type="text" placeholder="Playlist name" name="txtplaylist">
+            </div>
+            <div class="btnSubmit">
+                    <button type="submit" name="btnCreate">Create</button>
+            </div>
+            </form>
+            <?php	
+                if(isset($_POST['btnCreate'])){		
+                    //retrieve data from form and save the value to a variable
+                    //for tbluserprofile
+                    $playlistname=$_POST['txtplaylist'];	
+                    
+                    
+                    
+                    //save data to tbluserprofile			
+                    $sql1 ="Insert into tblplaylist(userid, playlistname) values('".$_SESSION['accountid']."','".$playlistname."')";
+                    mysqli_query($connection,$sql1);
+                    
+                }
+
+            ?>
+        </div>
+    </div>
+    <script>
+        $("#btnCreatePlaylist").click(function() {
+    $(".playlist-form").css("display", "flex");
+})
+    </script>
     
 </body>
 </html>
+        </div>
+    </div>
+    <script>
+        $("#btnCreatePlaylist").click(function() {
+    $(".playlist-form").css("display", "flex");
+})
+    </script>
+                        </body>
+    
+            
+            
