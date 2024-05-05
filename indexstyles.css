@@ -221,28 +221,31 @@ body {
 .playlist-form .edit-playlist {
     background-color: #000;
     border: 1px solid pink;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 175px;
+    height: 217px;
     width: 335px;
+}
+
+.playlist-form .edit-playlist span {
+    font-size: 25px;
 }
 
 .playlist-form .btnClose{
     text-align: right;
-    border: 1px solid pink;
-    width: 335px;
-    height: 175px;
+    width: 95%;
+    height: 15px;
 
 }
 
 .playlist-form .btnClose button{
-    background: #000;
+    background-color: transparent;
+    border: none;
+    color: white;
     text-align: right;
-    width: 335px;
-    height: 175px;
-
 }
 
 .playlist-form .edit-playlist .playlist-name {
@@ -250,17 +253,29 @@ body {
 }
 
 .playlist-form .edit-playlist .playlist-name input {
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
     height: 35px;
-    margin-top: 5px;
+    margin-top: 15px;
     padding: 5px;
     width: 100%;
 }
 
+.playlist-form .edit-playlist .btnSubmit {
+    width: 30%;
+    height: 36px;
+
+}
+
 .playlist-form .edit-playlist .btnSubmit button {
-    height: 25px;
-    width: 19px;
-    margin-top: 5px;
+    background: #525CEB;
+    border-radius: 18px;
+    font-size: 19px;
+    font-weight: bold;
     width: 100%;
+    height: 100%;
+    margin: 15px 0;
 }
 
 .playlist-form .close-form {
@@ -302,6 +317,7 @@ body {
 }
 
 .playlist .card .item a {
+    font-size: 25px;
     text-decoration: none;
 }
 

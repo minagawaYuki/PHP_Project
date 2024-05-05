@@ -27,7 +27,7 @@ session_start();
                 <a href=""></a>
             </div>
             <ul>
-                <li><a href="">
+                <li><a href="dashboard.php">
                     <span><i class="fa-solid fa-house"></i></span>
                 <span>Home</span>
             </a></li>
@@ -92,9 +92,9 @@ session_start();
             </div>
         </div>
         <div class="playlist-form">
-        <div class="btnClose"><button id="btnClose">&#10006</button></div>
+        
         <div class="edit-playlist">
-            
+        <div class="btnClose"><button id="btnClose">&#10006</button></div>
             <span>Create Playlist</span>
             <div class="playlist-name">
                 <form method="post">

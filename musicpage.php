@@ -35,9 +35,9 @@ session_start();
 
     ?>
     <div class="container">
-        <div class="top">
-            <i class="fa-solid fa-bars"></i>
-            <i class="fa-solid fa-magnifying-glass"></i>
+        <div class="top" id="btnDashboard" id="btnDashboard">
+            <i class="fa-solid fa-house"></i>
+            <button id="btnLike" name="btnLike"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <?php
             echo "<img class='cover-image' src='images/song".$songid.".jpg'></img>";
@@ -106,6 +106,10 @@ session_start();
         $(".pop-up .btnClose").click(function() {
             $(".pop-up").removeClass("active");
         })
+        $("#btnDashboard").click(function() {
+            window.location.href = 'dashboard.php';
+        })
+        
     </script>
     
     
