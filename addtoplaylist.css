@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #111;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.center button {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+    background-color: #f5f5f5;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pop-up {
+    color: white;
+    position: absolute;
+    top: -150%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.25);
+    width: 380px;
+    padding: 20px 30px;
+    background-color: #000;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, .15);
+    border-radius: 10px;
+    transition: top 0ms ease-in-out 200ms,
+    opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in 0ms;
+}
+
+.pop-up.active {
+    top: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    transition: top 0ms ease-in-out 200ms,
+    opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in 0ms;
+}
+
+.pop-up .btnClose {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    background-color: #181818;
+    color: white;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+
+.pop-up .playlists h2 {
+    text-align: center;
+    color: white;
+    margin: 10px 0px 20px;
+    font-size: 25px;
+}
+
+.pop-up .playlists .form-element {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+    margin: 15px 0px;
+}
+
+.pop-up .playlists .form-element label {
+    font-size: 17px;
+    color: white;
+}
+
+.pop-up .playlists .form-element form input {
+    display: none;
+}
+
+.pop-up .playlists .form-element button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    color: white;
+}

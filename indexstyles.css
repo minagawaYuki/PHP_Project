@@ -129,6 +129,7 @@ body {
 .create-playlist button {
     padding: 8px 20px;
     border: 0;
+    cursor: pointer;
     outline: 0;
     border-radius: 20px;
     font-weight: 600;
@@ -137,6 +138,7 @@ body {
 .main-section {
     margin-left: 300px;
     background: #181818;
+    overflow: auto;
 }
 
 .main-section .top-nav {
@@ -227,6 +229,22 @@ body {
     width: 335px;
 }
 
+.playlist-form .btnClose{
+    text-align: right;
+    border: 1px solid pink;
+    width: 335px;
+    height: 175px;
+
+}
+
+.playlist-form .btnClose button{
+    background: #000;
+    text-align: right;
+    width: 335px;
+    height: 175px;
+
+}
+
 .playlist-form .edit-playlist .playlist-name {
     width: 80%;
 }
@@ -252,6 +270,84 @@ body {
 
 .playlist-title h1 { 
     color: white;
+}
+
+.playlist {
+    padding: 20px 40px;
+}
+
+.playlist h2 {
+    color: white;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.playlist .card {
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.playlist .card .item {
+    width: 160px;
+    min-width: 140px;
+    background-color: #302f2f;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.playlist .card .item:hover {
+    background-color: #3d3c3c;
+}
+
+.playlist .card .item a {
+    text-decoration: none;
+}
+
+.playlist .card .item img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.playlist .item h4 {
+    color: white;
+}
+
+.playlist .item p {
+    color: #8f8e8e;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.playlist .item p:hover {
+    text-decoration: underline;
+}
+
+.playlist a {
+    position: relative;
+    color: black;
+}
+
+.playlist a:visited {color: black;} /* Visited link    */
+.playlist a:hover {color: black;}   /* Mouse over link */
+.playlist a:active {color: black;}  /* Selected link   */
+
+.playlist a .btnPlay i{ 
+    position: absolute;
+    background-color: #1db954;
+    border-radius: 50%;
+    padding: 14px;
+    right: 8px;
+    top: -40px;
+    opacity: 0;
+    transform: 0.3 ease all;
+}
+
+.playlist .card .item:hover a .btnPlay i{
+    opacity: 1;
+    transform: translateY(-20px);
 }
 
 

@@ -31,6 +31,7 @@
         <input type="text" placeholder="Song name" name="txtsongid">
         <button type="submit" name="btnAdd">Add</button>
     </form>
+    </div>
 
     <?php
         $id = $_GET['id'];
@@ -52,20 +53,28 @@
             ?>
             <?php
             $mysqli = new mysqli('localhost', 'root', '', 'dbbaringf2') or die (mysqli_error($mysqli));
-            $resultset = $mysqli->query("SELECT tblsongs.songid, tblsongs.songname from tblsongs, tblplaylistsongs WHERE tblsongs.songid = tblplaylistsongs.songid and tblplaylistsongs.playlistid = '".$playlistid."'") or die ($mysqli->error);
+            $resultset = $mysqli->query("SELECT tblsongs.songid, tblartist.name, tblsongs.title from tblsongs, tblartist, tblplaylistsongs WHERE tblsongs.songid = tblplaylistsongs.songid and tblplaylistsongs.playlistid = '".$playlistid."' and tblartist.artistid = tblsongs.artistid") or die ($mysqli->error);
         ?>
-        <div class="playlist-section">
-            <h1>Your Songs<h1>
-            <div class="playlist-list">
-                <ol>
+        <div class="playlist">
+            <h2>Songs<h2>
+            
+            <div class="card">
                     <?php
                         while($row = $resultset->fetch_assoc()):
                     ?>
-                    <li>
-                        <?php echo $row['songname'] ?>
-                    </li>
+                    <?php
+                    echo "<div class='item'>
+                            <img src='images/song".$row['songid'].".jpg'>
+                            <a href='musicpage.php?id=".$row['songid']."'>
+                            <div class='btnPlay' onclick='location.href=''''>
+                                <span><i class='fa-solid fa-play'></i></span>
+                            </div>
+                            </a>
+                            <h4>".$row['title']."</h4>  
+                            <p>".$row['name']."</p>
+                        </div>";
+                        ?>
                     <?php endwhile;?>
-                </ol>
             </div>
         </div>
         

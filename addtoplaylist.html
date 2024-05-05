@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="addtoplaylist.css">
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="center">
+        <button id="btnPlaylist">Add to Playlist</button>
+    </div>
+    <div class="pop-up">
+        <div class="btnClose">x</div>
+        <div class="playlists">
+            <h2>Add to Playlist</h2>
+            <div class="form-element">
+                <label>playlist</label>
+                <form method="post">
+                    <input type="text" placeholder="Song name" value="" name="txtsongid">
+                    <button type="submit" name="btnAdd">Add</button>
+                </form>
+                
+            </div>
+            <div class="form-element">
+                <label>playlist2</label>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#btnPlaylist").click(function() {
+            $(".pop-up").addClass("active");
+        })
+        $(".pop-up .btnClose").click(function() {
+            $(".pop-up").removeClass("active");
+        })
+    </script>
+</body>
+</html>

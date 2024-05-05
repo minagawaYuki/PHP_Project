@@ -66,53 +66,42 @@ session_start();
                     ?>
             </div>
         </div>
-        <div class="song-section">
-            <h1>Songs<h1>
+        <div class="playlist">
+            <h2>Songs<h2>
             <?php
-            $mysqli = new mysqli('localhost', 'root', '', 'dbbaringf2') or die (mysqli_error($mysqli));
-            $resultset = $mysqli->query("SELECT songname from tblsongs") or die ($mysqli->error);
+                $mysqli = new mysqli('localhost', 'root', '', 'dbbaringf2') or die (mysqli_error($mysqli));
+                $resultset = $mysqli->query("SELECT songid, title, tblartist.name from tblsongs, tblartist WHERE tblsongs.artistid = tblartist.artistid") or die ($mysqli->error);
             ?>
-            <div class="song-list">
-                <ol>
+            <div class="card">
                     <?php
                         while($row = $resultset->fetch_assoc()):
                     ?>
-                    <li>
-                        <?php echo $row['songname'] ?>
-                    </li>
-                    <?php endwhile;?>
-                </ol>
-            </div>
-        </div>
-        
-        <div class="playlist-section">
-            <h1>Your Playlists<h1>
-            <?php
-            $mysqli = new mysqli('localhost', 'root', '', 'dbbaringf2') or die (mysqli_error($mysqli));
-            $resultset = $mysqli->query("SELECT * from tblplaylist WHERE userid = ".$_SESSION['accountid']."") or die ($mysqli->error);
-            ?>
-            <div class="playlist-list">
-                <ol>
                     <?php
-                        while($row = $resultset->fetch_assoc()):
-                    ?>
-                    <li>
-                        <?php echo "<a href='playlistsongs.php?id=".$row['playlistid']."' style='padding-right: 5px;'>".$row['playlistname']."</a>" ?>
-                    </li>
+                    echo "<div class='item'>
+                            <img src='images/song".$row['songid'].".jpg'>
+                            <a href='musicpage.php?id=".$row['songid']."'>
+                            <div class='btnPlay' onclick='location.href=''''>
+                                <span><i class='fa-solid fa-play'></i></span>
+                            </div>
+                            </a>
+                            <h4>".$row['title']."</h4>
+                            <p>".$row['name']."</p>
+                        </div>";
+                        ?>
                     <?php endwhile;?>
-                </ol>
             </div>
         </div>
-    </div>
-    <div class="playlist-form">
+        <div class="playlist-form">
+        <div class="btnClose"><button id="btnClose">&#10006</button></div>
         <div class="edit-playlist">
+            
             <span>Create Playlist</span>
             <div class="playlist-name">
                 <form method="post">
                     <input type="text" placeholder="Playlist name" name="txtplaylist">
             </div>
             <div class="btnSubmit">
-                    <button type="submit" name="btnCreate">Create</button>
+                    <button type="submit" id="createPlaylist" name="btnCreate">Create</button>
             </div>
             </form>
             <?php	
@@ -132,22 +121,49 @@ session_start();
             ?>
         </div>
     </div>
+        
+        <div class="playlist">
+            <h2>Your Playlists<h2>
+            <?php
+            $mysqli = new mysqli('localhost', 'root', '', 'dbbaringf2') or die (mysqli_error($mysqli));
+            $resultset = $mysqli->query("SELECT * from tblplaylist WHERE userid = ".$_SESSION['accountid']."") or die ($mysqli->error);
+            ?>
+            <div class="card">
+            <?php
+                        while($row = $resultset->fetch_assoc()):
+                    ?>
+                    
+                    
+                    <?php
+                    echo "<div class='item'>
+                    <a href='deleteplaylists.php?id=".$row['playlistid']."'>x</a>
+                            <img src='images/song9.jpg'>
+                            <a href='playlistsongs.php?id=".$row['playlistid']."'>
+                            <div class='btnPlay' onclick='location.href='playlistsongs.php?id=".$row['playlistid']."'''>
+                                <span><i class='fa-solid fa-play'></i></span>
+                            </div>
+                            </a>
+                            <h4>".$row['playlistname']."</h4>
+                            <p>BINI</p>
+                        </div>";
+                        ?>
+                    <?php endwhile;?>
+            </div>
+        </div>
+    </div>
+    
     <script>
         $("#btnCreatePlaylist").click(function() {
-    $(".playlist-form").css("display", "flex");
-})
+            $(".playlist-form").css("display", "flex");
+        })
+        $("#btnClose").click(function() {
+            $(".playlist-form").css("display", "none");
+        })
+        
     </script>
     
 </body>
 </html>
-        </div>
-    </div>
-    <script>
-        $("#btnCreatePlaylist").click(function() {
-    $(".playlist-form").css("display", "flex");
-})
-    </script>
-                        </body>
     
             
             
