@@ -31,9 +31,9 @@ session_start();
                     <span><i class="fa-solid fa-house"></i></span>
                 <span>Home</span>
             </a></li>
-            <li><a href="">
-                <span><i class="fa-solid fa-magnifying-glass"></i></span>
-            <span>Search</span>
+            <li><a href="projectreport.php">
+                <span><i class="fa-solid fa-user"></i></span>
+            <span>Admin</span>
         </a></li>
             </ul>
         </div>
@@ -57,6 +57,34 @@ session_start();
             </li>
             </ul>
         </div>
+        <div class="sidebar-nav2">
+            <div class="logo">
+                <a href=""></a>
+            </div>
+            <ul>
+                <li><a href="">
+                    <span><i class="fa-solid fa-book"></i></span>
+                <span>Genre</span>
+            </a></li>
+            <li>
+                <div class="sidebar-scroll">
+                    <div class="create-playlist">
+                        <?php
+                            $mysqli = new mysqli('localhost', 'root', '', 'dbbaringf2') or die (mysqli_error($mysqli));
+                            $resultset = $mysqli->query("SELECT * from tblgenre") or die ($mysqli->error);
+                        ?>
+                        <?php
+                            while($row = $resultset->fetch_assoc()):
+                        ?>
+                        <?php
+                            echo "<a href='songgenre.php?id=".$row['genreid']."'>".$row['genrename']."</a>";
+                            ?>
+                        <?php endwhile;?>
+                    </div>
+                </div>
+            </li>
+            </ul>
+        </div>
     </div>
     <div class="main-section">
         <div class="top-nav">
@@ -64,6 +92,30 @@ session_start();
             <?php
                         echo "<span>".$_SESSION['username']."<span>";
                     ?>
+            </div>
+        </div>
+        <div class="playlist">
+            <h2>Artists<h2>
+            <?php
+                $mysqli = new mysqli('localhost', 'root', '', 'dbbaringf2') or die (mysqli_error($mysqli));
+                $resultset = $mysqli->query("SELECT * from tblsongs, tblartist WHERE tblsongs.artistid = tblartist.artistid") or die ($mysqli->error);
+            ?>
+            <div class="card">
+                    <?php
+                        while($row = $resultset->fetch_assoc()):
+                    ?>
+                    <?php
+                    echo "<div class='item'>
+                            <img src='images/artist".$row['songid'].".jpg'>
+                            <a href='artistsongs.php?id=".$row['artistid']."'>
+                            <div class='btnPlay' onclick='location.href=''''>
+                                <span><i class='fa-solid fa-play'></i></span>
+                            </div>
+                            </a>
+                            <h4>".$row['name']."</h4>
+                        </div>";
+                        ?>
+                    <?php endwhile;?>
             </div>
         </div>
         <div class="playlist">
@@ -137,7 +189,7 @@ session_start();
                     <?php
                     echo "<div class='item'>
                     <a href='deleteplaylists.php?id=".$row['playlistid']."'>x</a>
-                            <img src='images/song9.jpg'>
+                            <img src='images/playlist.jpg'>
                             <a href='playlistsongs.php?id=".$row['playlistid']."'>
                             <div class='btnPlay' onclick='location.href='playlistsongs.php?id=".$row['playlistid']."'''>
                                 <span><i class='fa-solid fa-play'></i></span>

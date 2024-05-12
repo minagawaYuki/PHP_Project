@@ -96,6 +96,9 @@ body {
     margin-bottom: 10px;
 }
 
+.sidebar-nav2 .sidebar-scroll .create-playlist a {
+    margin-top: 15px;
+}
 .sidebar-scroll {
     height: 125px;
     overflow-y: auto;

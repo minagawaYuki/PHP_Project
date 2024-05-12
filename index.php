@@ -17,7 +17,7 @@
             <ul>
                 <li><a href="login.php">Login</a></li>
                 <li><a href="register.php">Sign Up</a></li>
-                <li>About Us</li>
+                <li><a href="adminpage.html">About Us</a></li>
                 <li>Contact Us</li>
             </ul>
         </nav>

@@ -13,6 +13,10 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
     <script src="js/dashboard.js"></script>
     <title>Document</title>
 </head>
@@ -60,7 +64,7 @@ session_start();
                     <div class="create-playlist">
                         <h4>Create your first playlist</h4>
                         <p>It's easy, we'll help you</p>
-                        <button id="btnCreatePlaylist">Create Playlist</button>    
+                        <button id="btnEditPlaylist">Edit Playlist</button>    
                     </div>
                 </div>
             </li>
@@ -115,14 +119,59 @@ session_start();
                                 <span><i class='fa-solid fa-play'></i></span>
                             </div>
                             </a>
-                            <h4>".$row['title']."</h4>  
+                            <h4>".$row['title']."</h4>
                             <p>".$row['name']."</p>
                         </div>";
                         ?>
                     <?php endwhile;?>
             </div>
         </div>
+        <div class="playlist-form">
+        
+        <div class="edit-playlist">
+        <div class="btnClose"><button id="btnClose">&#10006</button></div>
+            <span>Edit Playlist</span>
+            <div class="playlist-name">
+                <form method="post">
+                    <input type="text" placeholder="Playlist name" name="txteditplaylist">
+            </div>
+            <div class="btnSubmit">
+                    <button type="submit" id="createPlaylist" name="btnEdit">Save</button>
+            </div>
+            </form>
+            <?php	
+                if(isset($_POST['btnEdit'])){		
+                    //retrieve data from form and save the value to a variable
+                    //for tbluserprofile
+                    $playlistname=$_POST['txteditplaylist'];	
+                    
+                    
+                    
+                    //save data to tbluserprofile
+                    $sql1 = "UPDATE tblplaylist SET playlistname = '".$playlistname."' WHERE playlistid = '".$_SESSION['playlistid']."'";
+                    if (mysqli_query($connection, $sql1)) {
+                        mysqli_close($connection);
+                        echo "<p>'Error deleting record'</p>";
+                        header("Location: playlistsongs.php?id=".$_SESSION['playlistid']); //If book.php is your main page where you list your all records
+                        exit;
+                    } else {
+                        echo "Error deleting record";
+                    }
+                    
+                }
+
+            ?>
+        </div>
     </div>
+    <script>
+        $("#btnEditPlaylist").click(function() {
+            $(".playlist-form").css("display", "flex");
+        })
+        $("#btnClose").click(function() {
+            $(".playlist-form").css("display", "none");
+        })
+        
+    </script>
         
 </body>
 </html>

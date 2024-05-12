@@ -1,6 +1,8 @@
 * {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -59,4 +61,35 @@ body {
 
 .user-playlist .create-playlist {
     font-size: 25px;
+}
+
+.tbl {
+    margin-top: 35px;
+    padding: 255px;
+}
+
+.tbl table {
+    border: 3px solid rgb(115, 4, 62);
+    margin-bottom: 75px;
+    table-layout: fixed;
+}
+
+h1 {
+    margin-top: 25px;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.tbl table th {
+    border: 3px solid rgb(115, 4, 62);
+    font-size: 28px;
+}
+
+.tbl table td {
+    border: 3px solid rgb(115, 4, 62);
+    font-size: 19px;
 }
