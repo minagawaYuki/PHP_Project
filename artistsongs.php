@@ -82,6 +82,28 @@ session_start();
         <?php
             echo "<h2>".$artistname."</h2>";
         ?>
+        <?php	
+                if(isset($_POST['btnFollow'])){		
+                    //retrieve data from form and save the value to a variable
+                    //for tbluserprofile	
+                    
+                    
+                    
+                    //save data to tbluserprofile			
+                    $sql1 ="Insert into artistfollowers(userid, artistid) values('".$_SESSION['accountid']."','".$_SESSION['artistid']."')";
+                    mysqli_query($connection,$sql1);
+                    
+                }
+
+            ?>
+        <div class="btnSubmit">
+            <form method="post">
+                    <button type="submit" id="createPlaylist" name="btnFollow">Follow</button>
+            </form>
+            </div>
+        <div class="btnFollow">
+            <button></button>
+        </div>
             
             <div class="card">
                     <?php

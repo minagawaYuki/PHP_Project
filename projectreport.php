@@ -10,6 +10,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/dashboardstyle.css">
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -77,6 +78,55 @@ session_start();
                     <td>".$row['songid']."</td>
                     <td>".$row['title']."</td>
                     <td>".$row['name']."</td>
+                    </tr>";
+            endwhile;?>
+        </tbody>
+    </table>
+    <h1>Charts</h1>
+    <h2>Most Followed Artists</h2>
+    <table class="sortable" cellspacing="0" width="100%" style="text-align: center;">
+        <thead>
+            <tr>
+                <th>Artist ID</th>
+                <th>Artist Name</th>
+                <th>Followers</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+            $mysqli = new mysqli('localhost', 'root', '', 'dbbaringf2') or die (mysqli_error($mysqli));
+            $resultset = $mysqli->query("SELECT * from tblartist") or die ($mysqli->error);
+            while($row = $resultset->fetch_assoc()):
+                $result = $mysqli->query("SELECT COUNT(*) as count from artistfollowers WHERE artistid = ".$row['artistid']."") or die ($mysqli->error);
+                $row1 = $result->fetch_assoc();
+                echo "<tr>
+                    <td>".$row['artistid']."</td>   
+                    <td>".$row['name']."</td>
+                    <td>".$row1['count']."</td>
+                    </tr>";
+            endwhile;?>
+        </tbody>
+    </table>
+    <h2>Most Listened Songs</h2>
+    <table class="sortable" cellspacing="0" width="100%" style="text-align: center;">
+        <thead>
+            <tr>
+                <th>Song Name</th>
+                <th>Artist Name</th>
+                <th>Plays</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+            $mysqli = new mysqli('localhost', 'root', '', 'dbbaringf2') or die (mysqli_error($mysqli));
+            $resultset = $mysqli->query("SELECT title, tblartist.name from tblsongs, tblartist WHERE tblsongs.artistid = tblartist.artistid") or die ($mysqli->error);
+            while($row = $resultset->fetch_assoc()):
+                $result = $mysqli->query("SELECT COUNT(*) as count from tbllikedsongs WHERE songid = ".$row['songid']."") or die ($mysqli->error);
+                $row1 = $result->fetch_assoc();
+                echo "<tr>
+                    <td>".$row['artistid']."</td>   
+                    <td>".$row['name']."</td>
+                    <td>".$row1['count']."</td>
                     </tr>";
             endwhile;?>
         </tbody>

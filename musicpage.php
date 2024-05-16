@@ -33,11 +33,34 @@ session_start();
     $songname = $row[1];
     $songartist = $row[2];
 
+    /*$sql1 ="UPDATE tbllistenedsongs
+                            SET songcount = songcount + 1
+                            WHERE songid = ".$songid."";
+    mysqli_query($connection, $sql1)*/
+    $sql1 ="Insert into tbllistenedsongs(userid, songid) values('".$_SESSION['accountid']."','".$songid."')";
+    mysqli_query($connection,$sql1);
+
     ?>
     <div class="container">
+    <?php	
+                if(isset($_POST['btnLike'])){		
+                    //retrieve data from form and save the value to a variable
+                    //for tbluserprofile	
+                    
+                    
+                    
+                    //save data to tbluserprofile			
+                    $sql1 ="Insert into tbllikedsongs(userid, songid) values('".$_SESSION['accountid']."','".$songid."')";
+                    mysqli_query($connection,$sql1);
+                    
+                }
+
+            ?>
         <div class="top" id="btnDashboard" id="btnDashboard">
+            <form method="post">
             <i class="fa-solid fa-house"></i>
-            <button id="btnLike" name="btnLike"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button id="btnLike" name="btnLike"><i class="fa-solid fa-heart"></i></i></button>
+        </form>
         </div>
         <?php
             echo "<img class='cover-image' src='images/song".$songid.".jpg'></img>";
